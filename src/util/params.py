@@ -17,15 +17,15 @@ HF_ACCESS_TOKEN = ""
 
 model_path = "segmind/small-sd"
 inpaint_model_path = "Lykon/dreamshaper-8-inpainting"
-prompt = "Self-portrait oil painting, a beautiful cyborg with golden hair, 8k"
-promptA = "Self-portrait oil painting, a beautiful man with golden hair, 8k"
-promptB = "Self-portrait oil painting, a beautiful woman with golden hair, 8k"
+prompt = "Pixar style, a cute hamster in a bonnet, 8k"
+promptA = "Pixar style, a cute hamster in a bonnet, 8k"
+promptB = "photo realistic, a red fox smoking a pipe, 8k"
 negative_prompt = "a photo frame"
 
 num_images = 5
 degree = 360
 perturbation_size = 0.1
-num_inference_steps = 8
+num_inference_steps = 12
 seed = 69420
 
 guidance_scale = 8
