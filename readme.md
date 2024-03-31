@@ -1,5 +1,6 @@
 # DiffusionDemo
 
+<!-- [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/memoatwit/DiffusionDemo/blob/master/demo.ipynb) --> 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/touretzkyds/DiffusionDemo/blob/master/demo.ipynb)
 
 This repository provides an in-depth exploration of stable diffusion models, walking readers through the inner workings in a step-by-step manner. 
@@ -30,6 +31,7 @@ Here are some additional references you might find interesting:
 
 - [Diffusion Explainer: Stable Diffusion Explained with Visualization](https://poloclub.github.io/diffusion-explainer/)
 - [The Illustrated Stable Diffusion](https://jalammar.github.io/illustrated-stable-diffusion/)
+- [HuggingFace Diffusers Quick Tour](https://huggingface.co/docs/diffusers/en/quicktour/)
 
 ## Collaborators
 
