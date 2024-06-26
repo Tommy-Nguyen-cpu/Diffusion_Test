@@ -100,7 +100,7 @@ with gr.Blocks() as demo:
 
         with gr.TabItem("Denoising"):
             gr.Markdown("Observe the intermediate images during denoising.")
-            gr.HTML(read_html("DiffusionDemo/html/denoising.html"))
+            gr.HTML(read_html("Diffusion_Test/html/denoising.html"))
 
             with gr.Row():
                 with gr.Column():
@@ -162,7 +162,7 @@ with gr.Blocks() as demo:
             gr.Markdown(
                 "Understand how different starting points in latent space can lead to different images."
             )
-            gr.HTML(read_html("DiffusionDemo/html/seeds.html"))
+            gr.HTML(read_html("Diffusion_Test/html/seeds.html"))
 
             with gr.Row():
                 with gr.Column():
@@ -195,7 +195,7 @@ with gr.Blocks() as demo:
 
         with gr.TabItem("Perturbations"):
             gr.Markdown("Explore different perturbations from a point in latent space.")
-            gr.HTML(read_html("DiffusionDemo/html/perturbations.html"))
+            gr.HTML(read_html("Diffusion_Test/html/perturbations.html"))
 
             with gr.Row():
                 with gr.Column():
@@ -259,7 +259,7 @@ with gr.Blocks() as demo:
             gr.Markdown(
                 "Generate a circular path in latent space and observe how the images vary along the path."
             )
-            gr.HTML(read_html("DiffusionDemo/html/circular.html"))
+            gr.HTML(read_html("Diffusion_Test/html/circular.html"))
 
             with gr.Row():
                 with gr.Column():
@@ -339,7 +339,7 @@ with gr.Blocks() as demo:
 
         with gr.TabItem("Poke"):
             gr.Markdown("Perturb a region in the image and observe the effect.")
-            gr.HTML(read_html("DiffusionDemo/html/poke.html"))
+            gr.HTML(read_html("Diffusion_Test/html/poke.html"))
 
             with gr.Row():
                 with gr.Column():
@@ -489,7 +489,7 @@ with gr.Blocks() as demo:
 
         with gr.TabItem("Guidance"):
             gr.Markdown("Observe the effect of different guidance scales.")
-            gr.HTML(read_html("DiffusionDemo/html/guidance.html"))
+            gr.HTML(read_html("Diffusion_Test/html/guidance.html"))
 
             with gr.Row():
                 with gr.Column():
@@ -541,7 +541,7 @@ with gr.Blocks() as demo:
 
         with gr.TabItem("Inpainting"):
             gr.Markdown("Inpaint the image based on the prompt.")
-            gr.HTML(read_html("DiffusionDemo/html/inpainting.html"))
+            gr.HTML(read_html("Diffusion_Test/html/inpainting.html"))
 
             with gr.Row():
                 with gr.Column():
@@ -593,7 +593,7 @@ with gr.Blocks() as demo:
             gr.Markdown(
                 "Visualize text embedding space in 3D with input texts and output images based on the chosen axis."
             )
-            gr.HTML(read_html("DiffusionDemo/html/embeddings.html"))
+            gr.HTML(read_html("Diffusion_Test/html/embeddings.html"))
 
             with gr.Row():
                 output = gr.HTML(
@@ -873,7 +873,7 @@ with gr.Blocks() as demo:
             gr.Markdown(
                 "Interpolate between the first and the second prompt, and observe how the output changes."
             )
-            gr.HTML(read_html("DiffusionDemo/html/interpolate.html"))
+            gr.HTML(read_html("Diffusion_Test/html/interpolate.html"))
 
             with gr.Row():
                 with gr.Column():
@@ -942,7 +942,7 @@ with gr.Blocks() as demo:
 
         with gr.TabItem("Negative"):
             gr.Markdown("Observe the effect of negative prompts.")
-            gr.HTML(read_html("DiffusionDemo/html/negative.html"))
+            gr.HTML(read_html("Diffusion_Test/html/negative.html"))
 
             with gr.Row():
                 with gr.Column():
