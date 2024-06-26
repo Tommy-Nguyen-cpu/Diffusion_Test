@@ -4,17 +4,17 @@ from gradio.networking import setup_tunnel
 from transformers import CLIPTextModelWithProjection, CLIPTokenizer, T5EncoderModel, T5TokenizerFast
 from diffusers import (
     AutoencoderKL,
-    SD3Transformer2DModel,
     FlowMatchEulerDiscreteScheduler,
     StableDiffusion3Pipeline,
 )
+from diffusers.models.modeling_outputs import Transformer2DModelOutput
 
 torch_device = "cuda" if torch.cuda.is_available() else "cpu"
 
 isLCM = False
 HF_ACCESS_TOKEN = ""
 
-model_path = "segmind/small-sd"
+model_path = "stabilityai/stable-diffusion-3-medium-diffusers"
 inpaint_model_path = "Lykon/dreamshaper-8-inpainting"
 prompt = "Pixar style, a cute hamster in a bonnet, 8k"
 promptA = "Pixar style, a cute hamster in a bonnet, 8k"
@@ -41,7 +41,7 @@ text_encoder = CLIPTextModelWithProjection.from_pretrained(model_path, subfolder
 
 scheduler = FlowMatchEulerDiscreteScheduler.from_pretrained(model_path, subfolder = "scheduler")
 
-transformer = SD3Transformer2DModel.from_pretrained(model_path, subfolder="transformer").to(
+transformer = Transformer2DModelOutput.from_pretrained(model_path, subfolder="transformer").to(
     torch_device
 )
 vae = AutoencoderKL.from_pretrained(model_path, subfolder="vae").to(torch_device)
