@@ -4,10 +4,13 @@ from gradio.networking import setup_tunnel
 from transformers import CLIPTextModel, CLIPTokenizer
 from diffusers import (
     AutoencoderKL,
-    UNet2DConditionModel,
-    LCMScheduler,
-    DDIMScheduler,
-    StableDiffusionPipeline,
+    SD3Transformer2DModel,
+    FlowMatchEulerDiscreteScheduler,
+    CLIPTokenizer,
+    CLIPTextModelWithProjection,
+    T5EncoderModel,
+    T5TokenizerFast,
+    StableDiffusion3Pipeline,
 )
 
 torch_device = "cuda" if torch.cuda.is_available() else "cpu"
@@ -36,29 +39,34 @@ pokeHeight, pokeWidth = 128, 128
 imageHeight, imageWidth = 512, 512
 
 tokenizer = CLIPTokenizer.from_pretrained(model_path, subfolder="tokenizer")
-text_encoder = CLIPTextModel.from_pretrained(model_path, subfolder="text_encoder").to(
+text_encoder = CLIPTextModelWithProjection.from_pretrained(model_path, subfolder="text_encoder").to(
     torch_device
 )
 
-if isLCM:
-    scheduler = LCMScheduler.from_pretrained(model_path, subfolder="scheduler")
-else:
-    scheduler = DDIMScheduler.from_pretrained(model_path, subfolder="scheduler")
+scheduler = FlowMatchEulerDiscreteScheduler.from_pretrained(model_path, subfolder = "scheduler")
 
-unet = UNet2DConditionModel.from_pretrained(model_path, subfolder="unet").to(
+transformer = SD3Transformer2DModel.from_pretrained(model_path, subfolder="transformer").to(
     torch_device
 )
 vae = AutoencoderKL.from_pretrained(model_path, subfolder="vae").to(torch_device)
 
-pipe = StableDiffusionPipeline(
-    tokenizer=tokenizer,
-    text_encoder=text_encoder,
-    unet=unet,
-    scheduler=scheduler,
-    vae=vae,
-    safety_checker=None,
-    feature_extractor=None,
-    requires_safety_checker=False,
+text_encoder_2 = CLIPTextModelWithProjection.from_pretrained(model_path, subfolder = ("text_encoder_2")).to(torch_device)
+tokenizer_2 = CLIPTokenizer.from_pretrained(model_path, subfolder="tokenizer_2")
+
+
+text_encoder_3 = T5EncoderModel.from_pretrained(model_path, subfolder = ("text_encoder_3")).to(torch_device)
+tokenizer_3 = T5TokenizerFast.from_pretrained(model_path, subfolder="tokenizer_3")
+
+pipe = StableDiffusion3Pipeline(
+    transformer = transformer,
+    scheduler = scheduler,
+    vae = vae,
+    text_encoder = text_encoder,
+    tokenizer = tokenizer,
+    text_encoder_2 = text_encoder_2,
+    tokenizer_2 = tokenizer_2,
+    text_encoder_3 = text_encoder_3,
+    tokenizer_3 = tokenizer_3
 ).to(torch_device)
 
 dash_tunnel = setup_tunnel("0.0.0.0", 8000, secrets.token_urlsafe(32))
