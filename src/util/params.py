@@ -1,13 +1,11 @@
 import torch
 import secrets
 from gradio.networking import setup_tunnel
-from transformers import CLIPTextModel, CLIPTokenizer
+from transformers import CLIPTextModelWithProjection, CLIPTokenizer
 from diffusers import (
     AutoencoderKL,
     SD3Transformer2DModel,
     FlowMatchEulerDiscreteScheduler,
-    CLIPTokenizer,
-    CLIPTextModelWithProjection,
     T5EncoderModel,
     T5TokenizerFast,
     StableDiffusion3Pipeline,
