@@ -65,7 +65,7 @@ imageHeight, imageWidth = 512, 512
 #     tokenizer_3 = tokenizer_3
 # ).to(torch_device)
 
-pipe = StableDiffusion3Pipeline("stabilityai/stable-diffusion-3-medium-diffusers")
+pipe = StableDiffusion3Pipeline("stabilityai/stable-diffusion-3-medium-diffusers").to(torch_device)
 
 dash_tunnel = setup_tunnel("0.0.0.0", 8000, secrets.token_urlsafe(32))
 
