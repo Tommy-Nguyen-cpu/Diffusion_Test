@@ -34,36 +34,38 @@ pokeX, pokeY = 256, 256
 pokeHeight, pokeWidth = 128, 128
 imageHeight, imageWidth = 512, 512
 
-tokenizer = CLIPTokenizer.from_pretrained(model_path, subfolder="tokenizer")
-text_encoder = CLIPTextModelWithProjection.from_pretrained(model_path, subfolder="text_encoder").to(
-    torch_device
-)
+# tokenizer = CLIPTokenizer.from_pretrained(model_path, subfolder="tokenizer")
+# text_encoder = CLIPTextModelWithProjection.from_pretrained(model_path, subfolder="text_encoder").to(
+#     torch_device
+# )
 
-scheduler = FlowMatchEulerDiscreteScheduler.from_pretrained(model_path, subfolder = "scheduler")
+# scheduler = FlowMatchEulerDiscreteScheduler.from_pretrained(model_path, subfolder = "scheduler")
 
-transformer = Transformer2DModelOutput.from_pretrained(model_path, subfolder="transformer").to(
-    torch_device
-)
-vae = AutoencoderKL.from_pretrained(model_path, subfolder="vae").to(torch_device)
+# transformer = Transformer2DModelOutput.from_pretrained(model_path, subfolder="transformer").to(
+#     torch_device
+# )
+# vae = AutoencoderKL.from_pretrained(model_path, subfolder="vae").to(torch_device)
 
-text_encoder_2 = CLIPTextModelWithProjection.from_pretrained(model_path, subfolder = ("text_encoder_2")).to(torch_device)
-tokenizer_2 = CLIPTokenizer.from_pretrained(model_path, subfolder="tokenizer_2")
+# text_encoder_2 = CLIPTextModelWithProjection.from_pretrained(model_path, subfolder = ("text_encoder_2")).to(torch_device)
+# tokenizer_2 = CLIPTokenizer.from_pretrained(model_path, subfolder="tokenizer_2")
 
 
-text_encoder_3 = T5EncoderModel.from_pretrained(model_path, subfolder = ("text_encoder_3")).to(torch_device)
-tokenizer_3 = T5TokenizerFast.from_pretrained(model_path, subfolder="tokenizer_3")
+# text_encoder_3 = T5EncoderModel.from_pretrained(model_path, subfolder = ("text_encoder_3")).to(torch_device)
+# tokenizer_3 = T5TokenizerFast.from_pretrained(model_path, subfolder="tokenizer_3")
 
-pipe = StableDiffusion3Pipeline(
-    transformer = transformer,
-    scheduler = scheduler,
-    vae = vae,
-    text_encoder = text_encoder,
-    tokenizer = tokenizer,
-    text_encoder_2 = text_encoder_2,
-    tokenizer_2 = tokenizer_2,
-    text_encoder_3 = text_encoder_3,
-    tokenizer_3 = tokenizer_3
-).to(torch_device)
+# pipe = StableDiffusion3Pipeline(
+#     transformer = transformer,
+#     scheduler = scheduler,
+#     vae = vae,
+#     text_encoder = text_encoder,
+#     tokenizer = tokenizer,
+#     text_encoder_2 = text_encoder_2,
+#     tokenizer_2 = tokenizer_2,
+#     text_encoder_3 = text_encoder_3,
+#     tokenizer_3 = tokenizer_3
+# ).to(torch_device)
+
+pipe = StableDiffusion3Pipeline("stabilityai/stable-diffusion-3-medium-diffusers")
 
 dash_tunnel = setup_tunnel("0.0.0.0", 8000, secrets.token_urlsafe(32))
 
